@@ -7,6 +7,7 @@ General SEERE set up:
 
 
 Setting up other data:
+
 High-resolution population tiffs (e.g., grid-level population per km^2 data):
 1. Open raster in QGIS.
 2. Decrease grid scale (if high resolution) by:
