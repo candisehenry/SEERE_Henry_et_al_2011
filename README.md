@@ -1,4 +1,4 @@
-# SEERE_Henry_et_al_2011
+# SEERE_Henry_et_al_2021
 
 General SEERE set up:
 1. Model should be run using run_SEERE_guatemala.py. It will call other scripts required.
