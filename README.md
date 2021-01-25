@@ -12,10 +12,15 @@ Setting up other data:
 High-resolution population tiffs (e.g., grid-level population per km^2 data):
 1. Open raster in QGIS.
 2. Decrease grid scale (if high resolution) by:
+
     a) layer > add layer > raster
+
     b) raster > align rasters > add raster to align > resampling method: nearest neighbor > select "rescale values according to cell size" > change cell size
+
     c) right click raster layer > export > save as geotiff file
+
     d) right click raster layer > properties > information > write down coordinate extent
+
 3. Open downsized tiff file in Python using b_calc_enedem.py > calc_energydemand2().
 4. Update grid cell size (step_pop) in d_setup.py.
 5. Update file names in d_setup.py and run_SEERE.py with correct folders and files.
@@ -31,13 +36,17 @@ Solar and wind data:
 7. Update file names in d_setup.py and run_SEERE.py with correct folders and files.
 8. Run run_SEACART.py. (Use .npy outputs for data analysis in Python. Use .asc files for mapping in QGIS. [See next step for details.])
 9. Mapping in QGIS:
+
     a) Load output .asc files as raster.
+
     b) Use country shapefile to clip raster extent.
+
 
 Hydro flow, slope, catchment area data:
 1. Open streamlines shapefile in QGIS.
 2. Open flow/slope/catchment area csvs in QGIS.
 3. Combine shapefile and csv by:
+
     a) right-click shapefile layer > properties > joins > join layer = csv > join field = COMID > target field = flow/slope/area > custom field name prefix = empty
 
     b) right-click shapefile layer > properties > fields > edit > manually clean up unused fields
