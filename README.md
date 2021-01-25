@@ -1,26 +1,12 @@
 # SEERE_Henry_et_al_2011
 
 General SEERE set up:
-1. Model should be edited and run in letter order of scripts (e.g., a_get_solarwinddata, then b_calc_solarpower, c_interp_solar, etc.)
-2. Scripts without lettering are supporting functions that get called by the letter scripts.
+1. Model should be run using run_SEERE_guatemala.py. It will call other scripts required.
+2. Script d_setup_guatemala.py might need to be changed to call files from correct paths. This file is hardcoded to call specific file names related to the Guatemala analysis.
+3. SEERE calls the other scripts in letter order (e.g., a_get_solarwinddata, then b_calc_solarpower, c_interp_solar, etc.). Scripts without lettering are supporting functions that get called by the letter scripts.
 
 
-Low-resolution population shapefiles (e.g., state- or province-level population summary data):
-1. Open shapefile in GQIS.
-2. Make sure CRS is in WGS 84: right-click layer > set CRS > set CRS layer
-3. If not already in WGS 84, MUST SAVE as a new shapefile and load new shapefile. *** Otherwise will get error! ***
-4. Get coordinates associated with population numbers:
-    a) vector > geometry tools > centroids
-    b) right-click centroids layer > open attribute table > open field calculator > create new field > output field name = lat > output field type = decimal number (real) > expression = $y
-    c) repeat step (b) for longitude ($x)
-    d) right-click centroids layer > export > save features as > format = csv
-    e) manually clean up .csv to include only latitude, longitude, population
-5. Open .csv in Python using b_calc_enedem.py > calc_energydemand().
-6. Update grid cell size (step_pop) in d_setup.py.
-7. Update file names in d_setup.py and run_SEERE.py with correct folders and files.
-8. Run run_SEERE.py.
-
-
+Setting up other data:
 High-resolution population tiffs (e.g., grid-level population per km^2 data):
 1. Open raster in QGIS.
 2. Decrease grid scale (if high resolution) by:
@@ -32,7 +18,6 @@ High-resolution population tiffs (e.g., grid-level population per km^2 data):
 4. Update grid cell size (step_pop) in d_setup.py.
 5. Update file names in d_setup.py and run_SEERE.py with correct folders and files.
 6. Run run_SEERE.py.
-
 
 Solar and wind data:
 1. Open a_get_solarwinddata.py.
@@ -46,7 +31,6 @@ Solar and wind data:
 9. Mapping in QGIS:
     a) Load output .asc files as raster.
     b) Use country shapefile to clip raster extent.
-
 
 Hydro flow, slope, catchment area data:
 1. Open streamlines shapefile in QGIS.
