@@ -60,7 +60,7 @@ def d_setup(run_d_setup, flow_suffix, temp_suffix, wind_multiplier):
                         variability = wind_multiplier)
         
         # Run energy demand calculations for solar and wind
-        calc_energydemand_tif(folder = 'Guatemala', infile = 'hogares_offgrid_munis.tif', 
+        calc_energydemand_tif(folder = 'Guatemala', infile = 'guatemala_population.tif', 
                             outfile = 'guatemala_demand_interp_survey.npy', 
                             step_from = step_pop, step_to = step, 
                             coord_from = coord_pop, coord_to = coord)
