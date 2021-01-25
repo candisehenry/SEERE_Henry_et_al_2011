@@ -39,12 +39,20 @@ Hydro flow, slope, catchment area data:
 2. Open flow/slope/catchment area csvs in QGIS.
 3. Combine shapefile and csv by:
     a) right-click shapefile layer > properties > joins > join layer = csv > join field = COMID > target field = flow/slope/area > custom field name prefix = empty
+
     b) right-click shapefile layer > properties > fields > edit > manually clean up unused fields
+
     c) right-click shapefile layer > export > save vector layer as ESRI shapefile *** Make sure CRS is WGS 84!! ***
+
     d) load newly saved shapefile in QGIS *** Important because QGIS can't make raster from joined data!! ***
+
 4. Convert to from shapefile/vector to raster by:
-    a) raster > conversion > rasterize > input layer = newly loaded shapefile > burn-in value = flow/slope/area > output raster size units = georeferenced units > resolution = step > output extent = use layer extent 
+    a) raster > conversion > rasterize > input layer = newly loaded shapefile > burn-in value = flow/slope/area > output raster size units = georeferenced units > resolution = step > output extent = use layer extent
+
     b) if error, go to view > panel > log messages to see error log.
+
     c) right-click raster layer > export > save as > format = geotiff > CRS = WGS 84 > extent = calculate from layer
+
     d) right click raster layer > properties > information > write down coordinate extent
+
 5. Open tiff files in Python using a_get_hydrodata().
