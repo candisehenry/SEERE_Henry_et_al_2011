@@ -4,7 +4,7 @@ Created on Wed May 13 16:03:48 2020
 
 Cleaned up version of pp_par_sol1_3d.py by hpaliwal
 
-Equations to be called by run_SEACART.py
+Equations to be called by run_SEERE.py
 
 @author: clhenry
 """
@@ -43,7 +43,6 @@ def costwind(energy_demand, power_avail, cf):
     blade_frac_of_turbine_cost = 0.197 # (source: https://www.nrel.gov/docs/fy18osti/72167.pdf)
     turbine_frac_of_total_cost = 0.679
     pricing = multiples * blades * (2.5215203120 * (sizing)**2.7865867031) / blade_frac_of_turbine_cost / turbine_frac_of_total_cost # 2.28 * (0.2106 * sizing**2.6578) from NREL doc above
-    #pricing = multiples * blades * (2.5215203120 * (sizing)**2.7865867031) / (0.2 * 0.64) # numbers from original SEACART
 
     if numpy.isfinite(pricing) == False:
         pricing = 0
@@ -60,7 +59,6 @@ def costwind(energy_demand, power_avail, cf):
     # Price per kW of wind
     total_rated_installed_power = mult_sizing * energy_demand / peak_wind_hrs # kW # equals power_demand/CF
     windpriceperkw = pricing / total_rated_installed_power # $/kW
-    # windpriceperkw = adjpricing * pricing / power_demand # $/kW # adjpricing from original SEACART
 
     if numpy.isfinite(windpriceperkw) == False:
         windpriceperkw = 0 
