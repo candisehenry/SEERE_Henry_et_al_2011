@@ -57,7 +57,7 @@ print("\nFinished running data set-up.\n")
 
 ## Create dictionary of csv input parameters
 # Open csv file
-paramDF = pandas.read_csv(wd + '/Data/SEERE Cost Inputs/input_params_GLEDS.csv')
+paramDF = pandas.read_csv(wd + '/Data/Guatemala/SEERE Cost Inputs/input_params_GLEDS.csv')
 global_params = dict(zip(paramDF.key, paramDF.value))
 
 # Convert dictionary into floats and lists (not strings)
