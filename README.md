@@ -6,6 +6,7 @@ General SEERE set up:
 3. SEERE calls the other scripts in letter order (e.g., a_get_solarwinddata, then b_calc_solarpower, c_interp_solar, etc.). Scripts without lettering are supporting functions that get called by the letter scripts.
 
 
+
 Setting up other data:
 
 High-resolution population tiffs (e.g., grid-level population per km^2 data):
