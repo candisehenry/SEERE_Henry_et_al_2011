@@ -203,7 +203,7 @@ def calc_wind_tif_v2(folder, infile_wndspd, infile_temp, outfile1, outfile2,
     wind_speed = import_raw_tiff(folderpath, infile_wndspd)
 
     # Get temperature numpy
-    air_temp = np.load(folderpath + infile_temp, allow_pickle=True) # kWh
+    air_temp = np.load('Data/' + folderpath + infile_temp, allow_pickle=True) # kWh
     
     # Set constants
     area = 1 # m^2
