@@ -57,7 +57,7 @@ print("\nFinished running data set-up.\n")
 
 ## Create dictionary of csv input parameters
 # Open csv file
-paramDF = pandas.read_csv(wd + '/Data/input_params_new_GLEDS.csv')
+paramDF = pandas.read_csv(wd + '/Data/SEERE Cost Inputs/input_params_GLEDS.csv')
 global_params = dict(zip(paramDF.key, paramDF.value))
 
 # Convert dictionary into floats and lists (not strings)
@@ -94,34 +94,6 @@ trans = numpy.load(wd + '/Outputs/Guatemala/guatemala_transmission.npy', allow_p
 lcsolar, lcwind, lchydro, lcfossil = run_static_model(global_params, step, ongrid_or_offgrid,
                             endem, solarava, windava, solarcf, windcf, infr, trans, 
                             flow_rate, catcharea, slope)
-
-
-## Save outputs as numpy and ascii files
-print("\nSaving files.")
-
-# Numpy files
-numpy.save(wd + '/Outputs/Guatemala/lcsolar_' + temp_suffix + '.npy', lcsolar)
-numpy.save(wd + '/Outputs/Guatemala/lcwind_' + wind_suffix + '.npy', lcwind)
-numpy.save(wd + '/Outputs/Guatemala/lchydro_' + flow_suffix + '.npy', lchydro)
-numpy.save(wd + '/Outputs/Guatemala/lcfossil_' + ongrid_or_offgrid + '_max.npy', lcfossil)
-
-# Convert numpy outputs to .asc
-a1, b1 = numpy.shape(endem)
-
-npy_to_geotiff('Guatemala', 'lcsolar_' + temp_suffix + '.npy', 'lcsolar_' + temp_suffix + '.asc', coord_solwin, step, a1, b1)
-npy_to_geotiff('Guatemala', 'lcwind_' + wind_suffix + '.npy', 'lcwind_' + wind_suffix + '.asc', coord_solwin, step, a1, b1)
-npy_to_geotiff('Guatemala', 'lchydro_' + flow_suffix + '.npy', 'lchydro_' + flow_suffix + '.asc', coord_hyd, step, a1, b1)
-npy_to_geotiff('Guatemala', 'lcfossil_' + ongrid_or_offgrid + '_max.npy', 'lcfossil_' + ongrid_or_offgrid + '_max.asc', coord_solwin, step, a1, b1)
-
-npy_to_geotiff('Guatemala', 'guatemala_pv_interp.npy', 'solarava_' + temp_suffix + '.asc', coord_solwin, step, a1, b1)
-npy_to_geotiff('Guatemala', 'guatemala_wind_interp.npy', 'windava_' + wind_suffix + '.asc', coord_solwin, step, a1, b1)
-npy_to_geotiff('Guatemala', 'guatemala_scf_interp.npy', 'solarcf_' + temp_suffix + '.asc', coord_solwin, step, a1, b1)
-npy_to_geotiff('Guatemala', 'guatemala_wcf_interp.npy', 'windcf_' + wind_suffix + '.asc', coord_solwin, step, a1, b1)
-npy_to_geotiff('Guatemala', 'flow.npy', 'flow_' + flow_suffix + '.asc', coord_hyd, step, a1, b1)
-npy_to_geotiff('Guatemala', 'hydrocf.npy', 'hydrocf_' + flow_suffix + '.asc', coord_hyd, step, a1, b1)
-npy_to_geotiff('Guatemala', 'guatemala_demand_interp_survey.npy', 'endem.asc', coord_solwin, step, a1, b1)
-npy_to_geotiff('Guatemala', 'guatemala_demand_interp_survey.npy', 'endem_hyd.asc', coord_hyd, step, a1, b1)
-
 
 print("\nTime elapsed: ", time.time() - start_time, "s")
 
